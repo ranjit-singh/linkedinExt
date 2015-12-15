@@ -1,0 +1,116 @@
+<!doctype html>
+<html ng-app="WittyParrotSearchExt" ng-csp>
+<head>
+   <meta charset="utf-8">
+   <title>WittyParrot</title>
+   <meta name="description" content="">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="twitter:widgets:csp" content="on">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+   <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+   <META HTTP-EQUIV="Expires" CONTENT="-1">
+   <link rel="icon" href="favicon" type="image/x-icon">
+   
+
+    <link rel="stylesheet" href="styles/main-f9fa9eef.css"/>
+    <base href="/">
+</head>
+
+<body>
+      <!-- Add your site or application content here -->
+
+      <script src="scripts/vendor-4ccfdac9.js"></script>
+
+      <script src="scripts/wittyparrot-c9bec4b8.js"></script>
+      <div class="animated fadeIn" id="OuterWrap" ng-controller="searchExtCtrl">
+        <div id="exTab3" class="mainContainer">
+          <ul  class="nav nav-pills">
+            <li class="active">
+              <a  href="#1b" data-toggle="tab">Search</a>
+            </li>
+            <li><a href="#2b" data-toggle="tab">Results</a>
+            </li>
+          </ul>
+
+          <div class="tab-content clearfix">
+              <div class="tab-pane active" id="1b">
+                <div class="col-xs-12 Container1">
+                  <form class="LoginBx" id="searchForm" name="searchProfile" role="form" method="post">
+                    <div class="col-xs-12">
+                      <label>Current Title</label>
+                    </div>
+                    <div class="col-xs-12" id="currentTitle">
+                      <div class="ui multiple selection search dropdown">
+                          <!-- This will receive comma separated value like OH,TX,WY !-->
+                          <input name="title" type="hidden">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Title</div>
+                          <div class="menu">
+                            <div class="item" data-value="{{title.value}}" ng-repeat="title in titleInfo">{{title.name}}</div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                      <label>Industry</label>
+                    </div>
+                    <div class="col-xs-12" id="industry">
+                      <div class="ui multiple search selection dropdown">
+                          <!-- This will receive comma separated value like OH,TX,WY !-->
+                          <input name="industry" type="hidden">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Select Industry</div>
+                          <div class="menu">
+                            <div class="item" data-value="{{industry.value}}" ng-repeat="industry in industryInfo">{{industry.name}}</div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                      <label>Country</label>
+                    </div>
+                    <div class="col-xs-12" id="country">
+                      <div class="ui search selection dropdown">
+                          <!-- This will receive comma separated value like OH,TX,WY !-->
+                          <input name="country" type="hidden">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Select Country</div>
+                          <div class="menu">
+                            <div class="item" data-value="{{country.value}}" ng-repeat="country in countryInfo">{{country.name}}</div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                      <label>Location</label>
+                    </div>
+                    <div class="col-xs-12" id="location">
+                      <div class="ui search selection dropdown">
+                          <!-- This will receive comma separated value like OH,TX,WY !-->
+                          <input name="location" type="hidden">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Select Location</div>
+                          <div class="menu">
+                            <div class="item" data-value="{{location.value}}" ng-repeat="location in locationInfo">{{location.name}}</div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                      <label>Keywords</label>
+                    </div>
+                    <div class="col-xs-12">
+                      <input type="text" name="keywords">
+                    </div>
+                    <div class="col-xs-12 submit-btn">
+                      <input type="submit" class="col-xs-3" name="search" value="Search">
+                      <input type="reset"  class="col-xs-3 pull-right" name="clear" value="Clear" ng-click="clearSearchField()">
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="tab-pane" id="2b">
+                <h3>Result</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
