@@ -1,7 +1,7 @@
-WittyWeb
+WittyParrot
 ========
 
-Web Development Project at WittyParrot. All development changes are done inside **app** folder, **dist** folder is **ONLY** for deployment.
+Chrome Extension Plugin at WittyParrot. All development changes are done inside **development** folder, **production** folder is **ONLY** for deployment.
 
 Pre-requirement
 ===============
