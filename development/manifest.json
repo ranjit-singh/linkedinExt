@@ -1,0 +1,21 @@
+{
+	"name": "WittyParrot",
+	"version": "1.0",
+	"manifest_version": 2,
+	"description": "WittyParrot",
+	"browser_action": {
+		"default_popup": "index.html",
+		"default_icon": "images/widget_logo.png"
+	},
+	"content_security_policy": "script-src 'self' https://www.google.com; object-src 'self'",
+	"content_scripts": [{
+		"js": ["bower_components/jquery/dist/jquery.js", "scripts/search.js"],
+		"matches": ["*://*/*"],
+		"run_at": "document_end"
+	}],
+	"minimum_chrome_version": "18",
+	"permissions": ["http://*/*", "https://*/*", "unlimitedStorage", "contextMenus", "cookies", "tabs", "notifications", "activeTab"],
+	"web_accessible_resources": [
+		"bower_components/*", "scripts/*"
+	]
+}

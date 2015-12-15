@@ -1,0 +1,409 @@
+{
+    "success": true,
+    "results":[
+    {
+        "name": "Afghanistan",
+        "value": "af.linkedin.com"
+    },
+    {
+        "name": "Albania",
+        "value": "al.linkedin.com"
+    },
+    {
+        "name": "Algeria",
+        "value": "dz.linkedin.com"
+    },
+    {
+        "name": "Argentina",
+        "value": "ar.linkedin.com"
+    },
+    {
+        "name": "Australia",
+        "value": "au.linkedin.com"
+    },
+    {
+        "name": "Austria",
+        "value": "at.linkedin.com"
+    },
+    {
+        "name": "Bahrain",
+        "value": "bh.linkedin.com"
+    },
+    {
+        "name": "Bangladesh",
+        "value": "bd.linkedin.com"
+    },
+    {
+        "name": "Belgium",
+        "value": "be.linkedin.com"
+    },
+    {
+        "name": "Bolivia",
+        "value": "bo.linkedin.com"
+    },
+    {
+        "name": "Bosnia and Herzegovina",
+        "value": "ba.linkedin.com"
+    },
+    {
+        "name": "Brazil",
+        "value": "br.linkedin.com"
+    },
+    {
+        "name": "Bulgaria",
+        "value": "bg.linkedin.com"
+    },
+    {
+        "name": "Canada",
+        "value": "ca.linkedin.com"
+    },
+    {
+        "name": "Chile",
+        "value": "cl.linkedin.com"
+    },
+    {
+        "name": "China",
+        "value": "cn.linkedin.com"
+    },
+    {
+        "name": "Colombia",
+        "value": "co.linkedin.com"
+    },
+    {
+        "name": "Costa Rica",
+        "value": "cr.linkedin.com"
+    },
+    {
+        "name": "Croatia",
+        "value": "hr.linkedin.com"
+    },
+    {
+        "name": "Cyprus",
+        "value": "cy.linkedin.com"
+    },
+    {
+        "name": "Czech Republic",
+        "value": "cz.linkedin.com"
+    },
+    {
+        "name": "Denmark",
+        "value": "dk.linkedin.com"
+    },
+    {
+        "name": "Dominican Republic",
+        "value": "do.linkedin.com"
+    },
+    {
+        "name": "Ecuador",
+        "value": "ec.linkedin.com"
+    },
+    {
+        "name": "Egypt",
+        "value": "eg.linkedin.com"
+    },
+    {
+        "name": "El Salvador",
+        "value": "sv.linkedin.com"
+    },
+    {
+        "name": "Estonia",
+        "value": "ee.linkedin.com"
+    },
+    {
+        "name": "Finland",
+        "value": "fi.linkedin.com"
+    },
+    {
+        "name": "France",
+        "value": "fr.linkedin.com"
+    },
+    {
+        "name": "Germany",
+        "value": "de.linkedin.com"
+    },
+    {
+        "name": "Ghana",
+        "value": "gh.linkedin.com"
+    },
+    {
+        "name": "Greece",
+        "value": "gr.linkedin.com"
+    },
+    {
+        "name": "Guatemala",
+        "value": "gt.linkedin.com"
+    },
+    {
+        "name": "Honduras",
+        "value": "hn.linkedin.com"
+    },
+    {
+        "name": "Hong Kong",
+        "value": "hk.linkedin.com"
+    },
+    {
+        "name": "Hungary",
+        "value": "hu.linkedin.com"
+    },
+    {
+        "name": "Iceland",
+        "value": "is.linkedin.com"
+    },
+    {
+        "name": "India",
+        "value": "in.linkedin.com"
+    },
+    {
+        "name": "Indonesia",
+        "value": "id.linkedin.com"
+    },
+    {
+        "name": "Iran",
+        "value": "ir.linkedin.com"
+    },
+    {
+        "name": "Ireland",
+        "value": "ie.linkedin.com"
+    },
+    {
+        "name": "Israel",
+        "value": "il.linkedin.com"
+    },
+    {
+        "name": "Italy",
+        "value": "it.linkedin.com"
+    },
+    {
+        "name": "Jamaica",
+        "value": "jm.linkedin.com"
+    },
+    {
+        "name": "Japan",
+        "value": "jp.linkedin.com"
+    },
+    {
+        "name": "Jordan",
+        "value": "jo.linkedin.com"
+    },
+    {
+        "name": "Kazakhstan",
+        "value": "kz.linkedin.com"
+    },
+    {
+        "name": "Kenya",
+        "value": "ke.linkedin.com"
+    },
+    {
+        "name": "Korea",
+        "value": "kr.linkedin.com"
+    },
+    {
+        "name": "Kuwait",
+        "value": "kw.linkedin.com"
+    },
+    {
+        "name": "Latvia",
+        "value": "lv.linkedin.com"
+    },
+    {
+        "name": "Lebanon",
+        "value": "lb.linkedin.com"
+    },
+    {
+        "name": "Lithuania",
+        "value": "lt.linkedin.com"
+    },
+    {
+        "name": "Luxembourg",
+        "value": "lu.linkedin.com"
+    },
+    {
+        "name": "Macedonia",
+        "value": "mk.linkedin.com"
+    },
+    {
+        "name": "Malaysia",
+        "value": "my.linkedin.com"
+    },
+    {
+        "name": "Malta",
+        "value": "mt.linkedin.com"
+    },
+    {
+        "name": "Mauritius",
+        "value": "mu.linkedin.com"
+    },
+    {
+        "name": "Mexico",
+        "value": "mx.linkedin.com"
+    },
+    {
+        "name": "Montenegro",
+        "value": "me.linkedin.com"
+    },
+    {
+        "name": "Morocco",
+        "value": "ma.linkedin.com"
+    },
+    {
+        "name": "Nepal",
+        "value": "np.linkedin.com"
+    },
+    {
+        "name": "Netherlands",
+        "value": "nl.linkedin.com"
+    },
+    {
+        "name": "New Zealand",
+        "value": "nz.linkedin.com"
+    },
+    {
+        "name": "Nigeria",
+        "value": "ng.linkedin.com"
+    },
+    {
+        "name": "Norway",
+        "value": "no.linkedin.com"
+    },
+    {
+        "name": "Oman",
+        "value": "om.linkedin.com"
+    },
+    {
+        "name": "Pakistan",
+        "value": "pk.linkedin.com"
+    },
+    {
+        "name": "Panama",
+        "value": "pa.linkedin.com"
+    },
+    {
+        "name": "Peru",
+        "value": "pe.linkedin.com"
+    },
+    {
+        "name": "Philippines",
+        "value": "ph.linkedin.com"
+    },
+    {
+        "name": "Poland",
+        "value": "pl.linkedin.com"
+    },
+    {
+        "name": "Portugal",
+        "value": "pt.linkedin.com"
+    },
+    {
+        "name": "Puerto Rico",
+        "value": "pr.linkedin.com"
+    },
+    {
+        "name": "Qatar",
+        "value": "qa.linkedin.com"
+    },
+    {
+        "name": "Romania",
+        "value": "ro.linkedin.com"
+    },
+    {
+        "name": "Russian Federation",
+        "value": "ru.linkedin.com"
+    },
+    {
+        "name": "Saudi Arabia",
+        "value": "sa.linkedin.com"
+    },
+    {
+        "name": "Serbia",
+        "value": "rs.linkedin.com"
+    },
+    {
+        "name": "Singapore",
+        "value": "sg.linkedin.com"
+    },
+    {
+        "name": "Slovak Republic",
+        "value": "sk.linkedin.com"
+    },
+    {
+        "name": "Slovenia",
+        "value": "si.linkedin.com"
+    },
+    {
+        "name": "South Africa",
+        "value": "za.linkedin.com"
+    },
+    {
+        "name": "Spain",
+        "value": "es.linkedin.com"
+    },
+    {
+        "name": "Sri Lanka",
+        "value": "lk.linkedin.com"
+    },
+    {
+        "name": "Sweden",
+        "value": "se.linkedin.com"
+    },
+    {
+        "name": "Switzerland",
+        "value": "ch.linkedin.com"
+    },
+    {
+        "name": "Taiwan",
+        "value": "tw.linkedin.com"
+    },
+    {
+        "name": "Tanzania",
+        "value": "tz.linkedin.com"
+    },
+    {
+        "name": "Thailand",
+        "value": "th.linkedin.com"
+    },
+    {
+        "name": "Trinidad and Tobago",
+        "value": "tt.linkedin.com"
+    },
+    {
+        "name": "Tunisia",
+        "value": "tn.linkedin.com"
+    },
+    {
+        "name": "Turkey",
+        "value": "tr.linkedin.com"
+    },
+    {
+        "name": "Uganda",
+        "value": "ug.linkedin.com"
+    },
+    {
+        "name": "Ukraine",
+        "value": "ua.linkedin.com"
+    },
+    {
+        "name": "United Arab Emirates",
+        "value": "ae.linkedin.com"
+    },
+    {
+        "name": "United Kingdom",
+        "value": "uk.linkedin.com"
+    },
+    {
+        "name": "United States",
+        "value": "linkedin.com"
+    },
+    {
+        "name": "Uruguay",
+        "value": "uy.linkedin.com"
+    },
+    {
+        "name": "Venezuela",
+        "value": "ve.linkedin.com"
+    },
+    {
+        "name": "Vietnam",
+        "value": "vn.linkedin.com"
+    }
+]
+}
