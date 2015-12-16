@@ -16,8 +16,6 @@
                   //only add urls that start with http
                   pageInfo.url = href
                   pageInfos.push(pageInfo);
-                  var htmlElm='<span style=" position: absolute;left: -18%;"><input type="button" value="Add Profile" onclick="addProfileUrl(event)" style="border: none;padding: 5px;background: #000fff;color: #fff;"></span>';
-                  $(this).closest('h3').append(htmlElm);
               }
           });
           sendResponse(pageInfos);
