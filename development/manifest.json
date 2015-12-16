@@ -8,14 +8,33 @@
 		"default_icon": "images/widget_logo.png"
 	},
 	"content_security_policy": "script-src 'self' https://www.google.com; object-src 'self'",
-	"content_scripts": [{
-		"js": ["bower_components/jquery/dist/jquery.js", "scripts/search.js"],
-		"matches": ["*://*/*"],
-		"run_at": "document_end"
-	}],
+	"background": {
+		"scripts": [
+				"reload.js"
+			]
+	},
+	"default_locale": "en",
+	"content_scripts": [
+	{
+		"matches": [
+			"http://*/*",
+			"https://*/*"
+		],
+		"css": [
+			"bower_components/angular/angular-csp.css"
+		],
+		"js": [
+			"bower_components/angular/angular.min.js",
+			"scripts/contentscript.js", "bower_components/jquery/dist/jquery.js", "scripts/search.js"
+		],
+		"html": [ "templates/bing.html" ],
+		"run_at": "document_end",
+		"all_frames": false
+	}
+	],
 	"minimum_chrome_version": "18",
 	"permissions": ["http://*/*", "https://*/*", "unlimitedStorage", "contextMenus", "cookies", "tabs", "notifications", "activeTab"],
 	"web_accessible_resources": [
-		"bower_components/*", "scripts/*"
+		"bower_components/*", "scripts/*", "templates/addButtonList.html"
 	]
 }

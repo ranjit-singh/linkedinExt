@@ -71,6 +71,8 @@ searchApp.service("searchExtService", function($http, $q){
               });
               $scope.clearSearchField=function(){
                 $('.ui.dropdown').dropdown('clear');
+                 chrome.windows.create({'url': '../views/main.html', 'type': 'popup'}, function(window) {
+                 });
               };
               $scope.message = "Hello from AngularJS";
 });
