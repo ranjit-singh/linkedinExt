@@ -4,9 +4,11 @@
    </div>
    <div class="LoginBx">
       <h3>Log In</h3>
-      <form class="col-xs-12 LoginForm" role="form" method="post" onsubmit="return login();" name="loginForm" autocomplete="on" id="loginform">
-         <input type="email" class="form-control" placeholder="Username" name="username" autocomplete="on" required>
-         <input type="password" class="form-control" placeholder="Password" required>
+      <form class="col-xs-12 LoginForm" role="form" method="post" ng-submit="login()" name="loginForm" autocomplete="on" id="loginform">
+         <input type="email" class="form-control" ng-model="username" placeholder="Username" name="username" autocomplete="on" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$"
+         oninvalid="setCustomValidity('Please enter email address.')"
+         onchange="try{setCustomValidity('')}catch(e){}">
+         <input type="password" class="form-control" ng-model="password" placeholder="Password" required>
          <div class="col-xs-12 StayLoggedIn">
             <input type="checkbox"> Stay logged in
          </div>
@@ -17,9 +19,3 @@
       </div>
    </div>
 </div>
-<script>
-function login(){
-  $("#OuterWrap").load("views/main.html");
-  return false;
-};
-</script>

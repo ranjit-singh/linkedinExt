@@ -21,6 +21,7 @@
                   <i class="dropdown icon"></i>
                   <div class="default text">Title</div>
                   <div class="menu">
+                    <div class="item" data-value="{{title.value}}" ng-repeat="title in titleInfo">{{title.name}}</div>
                   </div>
                 </div>
             </div>
@@ -34,6 +35,7 @@
                   <i class="dropdown icon"></i>
                   <div class="default text">Select Industry</div>
                   <div class="menu">
+                    <div class="item" data-value="{{industry.value}}" ng-repeat="industry in industryInfo">{{industry.name}}</div>
                   </div>
                 </div>
             </div>
@@ -47,6 +49,7 @@
                   <i class="dropdown icon"></i>
                   <div class="default text">Select Country</div>
                   <div class="menu">
+                    <div class="item" data-value="{{country.value}}" ng-repeat="country in countryInfo">{{country.name}}</div>
                   </div>
                 </div>
             </div>
@@ -60,6 +63,7 @@
                   <i class="dropdown icon"></i>
                   <div class="default text">Select Location</div>
                   <div class="menu">
+                    <div class="item" data-value="{{location.value}}" ng-repeat="location in locationInfo">{{location.name}}</div>
                   </div>
                 </div>
             </div>
@@ -71,14 +75,13 @@
             </div>
             <div class="col-xs-12 submit-btn">
               <input type="submit" class="col-xs-3" name="search" value="Search">
-              <input type="reset"  class="col-xs-3 pull-right" name="clear" value="Clear">
+              <input type="reset"  class="col-xs-3 pull-right" name="clear" value="Clear" ng-click="clearSearchField()">
             </div>
           </form>
         </div>
       </div>
-    <div class="tab-pane" id="2b">
-      <h3>Result</h3>
-    </div>
+      <div class="tab-pane" id="2b">
+        <h3>Total Search Count = <span>{{pageInfos.length}}</span></h3>
+      </div>
     </div>
   </div>
-</div>

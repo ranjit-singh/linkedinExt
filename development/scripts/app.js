@@ -6,7 +6,17 @@
  * Main module of the application.
  */
 'use strict';
-var searchApp = angular.module('WittyParrotSearchExt', []);
+var searchApp = angular.module('WittyParrotSearchExt', ['ui.router'])
+.config(['$stateProvider','$rootScopeProvider','$urlRouterProvider', function ($stateProvider, $rootScopeProvider, $urlRouterProvider) {
+                //$locationProvider.html5Mode(true);
+                $rootScopeProvider.digestTtl(100);
+                $urlRouterProvider.otherwise('/');
+                $stateProvider
+                        .state('login', {
+                            url: '/',
+                            templateUrl: '../views/login.html'
+                        });
+}]);
 searchApp.service("searchExtService", function($http, $q){
         this.searchLinkedinProfile=function(){
           // Not implemented
