@@ -4,7 +4,7 @@
    </div>
    <div class="LoginBx">
       <h3>Log In</h3>
-      <form class="col-xs-12 LoginForm" role="form" method="post" ng-submit="login()" name="loginForm" autocomplete="on" id="loginform">
+      <form class="col-xs-12 LoginForm" role="form" method="post" ng-submit="login(username, password)" name="loginForm" autocomplete="on" id="loginform">
          <input type="email" class="form-control" ng-model="username" placeholder="Username" name="username" autocomplete="on" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$"
          oninvalid="setCustomValidity('Please enter email address.')"
          onchange="try{setCustomValidity('')}catch(e){}">

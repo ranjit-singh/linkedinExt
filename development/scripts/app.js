@@ -14,14 +14,51 @@ var searchApp = angular.module('WittyParrotSearchExt', ['ui.router'])
                 $stateProvider
                         .state('login', {
                             url: '/',
-                            templateUrl: '../views/login.html'
+                            templateUrl: '../views/login.html',
+                            resolve:{
+                              authenticated: function($location) {
+                                        if (docCookies.getItem('tokenKey')) {
+                                            $location.path('/main');
+                                            return;
+                                        }
+                                    }
+                            }
                         })
                         .state('main', {
                           url:'/main',
                           templateUrl: '../views/main.html'
                         });
 }]);
-searchApp.service("searchExtService", function($http, $q){
+searchApp.service("searchExtService", function($http, $q, $location){
+    var baseUrl="http://ec2-54-165-121-127.compute-1.amazonaws.com:8080/alfresco/service/acrowit/";
+        this.login=function(urlParam){
+          var deferred = $q.defer();
+          $http.post(baseUrl+'login', urlParam).then(function(response){
+            var now = new Date(), time = now.getTime();
+            time += 36000 * 1000;
+            now.setTime(time);
+            docCookies.setItem("tokenKey", response.data.respList[0].ticket, now.toUTCString(), "/");
+            deferred.resolve(response.data);
+          }).then(null, function(response){
+            deferred.reject(response);
+          });
+          return deferred.promise;
+        };
+        this.logout=function(){
+          var deferred = $q.defer();
+          $http.get(baseUrl+'logout?access_token='+docCookies.getItem("tokenKey")).then(function(response){
+            docCookies.removeItem('tokenKey');
+            $location.path('/');
+            window.location.reload();
+            deferred.resolve(response.data);
+          }).then(null, function(response){
+            docCookies.removeItem('tokenKey');
+            $location.path('/');
+            window.location.reload();
+            deferred.reject(response);
+          });
+          return deferred.promise;
+        };
         this.searchLinkedinProfile=function(){
           // Not implemented
         };
@@ -59,9 +96,23 @@ searchApp.service("searchExtService", function($http, $q){
       };
 })
 .controller("mainExtCtrl", function($scope, searchExtService, $location){
-        $scope.login=function(){
-          $location.path('/main');
+        $scope.login=function(userName, password){
+          var urlParam={};
+          urlParam.userName=userName;
+          urlParam.password=password;
+          urlParam.isEncript=false;
+          searchExtService.login(urlParam).then(function(response){
+            if(!response.error){
+              $location.path('/main');
+              console.log("Successfully loged-in.");
+            }
+          });
         };
+          $scope.logout=function(){
+            searchExtService.logout().then(function(response){
+                console.log("Successfully loged-out.");
+            });
+          };
       })
 .controller("searchExtCtrl", function($scope, searchExtService){
               searchExtService.getList('scripts/title.json').then(function(response){

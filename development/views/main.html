@@ -1,4 +1,8 @@
 <div id="exTab3" class="mainContainer" ng-controller="searchExtCtrl">
+  <div class="WittyParrotLogo margin-0">
+     <img src="../images/logo_for_login.png">
+     <span ng-click="logout()" style="float:right;cursor:pointer;" class="fa fa-power-off"></i>LogOut</span>
+  </div>
   <ul  class="nav nav-pills">
     <li class="active">
       <a  href="#1b" data-toggle="tab">Search</a>
@@ -71,7 +75,7 @@
               <label>Keywords</label>
             </div>
             <div class="col-xs-12">
-              <input type="text" name="keywords">
+              <input type="text" name="keywords" class="keywords-input" placeholder="Enter keyword">
             </div>
             <div class="col-xs-12 submit-btn">
               <input type="submit" class="col-xs-3" name="search" value="Search">
