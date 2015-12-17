@@ -27,7 +27,7 @@
 			"bower_components/angular/angular.min.js",
 			"scripts/contentscript.js", "bower_components/jquery/dist/jquery.js", "scripts/search.js"
 		],
-		"html": [ "templates/bing.html" ],
+		"html": [ "templates/addButtonList.html" ],
 		"run_at": "document_end",
 		"all_frames": false
 	}

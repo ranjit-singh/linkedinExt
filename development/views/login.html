@@ -1,4 +1,4 @@
-<div class="col-xs-11 col-sm-6 col-md-3 LoginInnerContainer">
+<div class="col-xs-12 col-sm-6 col-md-3 LoginInnerContainer">
    <div class="WittyParrotLogo">
       <img src="../images/logo_for_login.png">
    </div>
@@ -9,9 +9,6 @@
          oninvalid="setCustomValidity('Please enter email address.')"
          onchange="try{setCustomValidity('')}catch(e){}">
          <input type="password" class="form-control" ng-model="password" placeholder="Password" required>
-         <div class="col-xs-12 StayLoggedIn">
-            <input type="checkbox"> Stay logged in
-         </div>
          <input type="submit" class="btn btn-default LoginButton col-xs-offset-3 col-xs-6" value="Log In">
       </form>
       <div class="col-xs-12 AppVersion">
