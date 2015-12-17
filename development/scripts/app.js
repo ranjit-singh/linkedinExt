@@ -15,6 +15,10 @@ var searchApp = angular.module('WittyParrotSearchExt', ['ui.router'])
                         .state('login', {
                             url: '/',
                             templateUrl: '../views/login.html'
+                        })
+                        .state('main', {
+                          url:'/main',
+                          templateUrl: '../views/main.html'
                         });
 }]);
 searchApp.service("searchExtService", function($http, $q){
@@ -53,7 +57,13 @@ searchApp.service("searchExtService", function($http, $q){
 
           });
       };
-}).controller("searchExtCtrl", function($scope, searchExtService){
+})
+.controller("mainExtCtrl", function($scope, searchExtService, $location){
+        $scope.login=function(){
+          $location.path('/main');
+        };
+      })
+.controller("searchExtCtrl", function($scope, searchExtService){
               searchExtService.getList('scripts/title.json').then(function(response){
                 $scope.titleInfo=response.results;
               });
@@ -81,8 +91,5 @@ searchApp.service("searchExtService", function($http, $q){
               });
               $scope.clearSearchField=function(){
                 $('.ui.dropdown').dropdown('clear');
-                 chrome.windows.create({'url': '../views/main.html', 'type': 'popup'}, function(window) {
-                 });
               };
-              $scope.message = "Hello from AngularJS";
 });
