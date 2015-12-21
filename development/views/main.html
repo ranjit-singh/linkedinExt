@@ -86,6 +86,9 @@
       </div>
       <div class="tab-pane" id="2b">
         <h3>Total Search Count = <span>{{pageInfos.length}}</span></h3>
+        <ul>
+          <li ng-repeat="url in pageInfos">{{url.url}}</li>
+          </ul>
       </div>
     </div>
   </div>

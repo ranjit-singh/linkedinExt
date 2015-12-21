@@ -25,7 +25,7 @@
 		],
 		"js": [
 			"bower_components/angular/angular.min.js",
-			"scripts/contentscript.js", "bower_components/jquery/dist/jquery.js", "scripts/search.js"
+			"bower_components/jquery/dist/jquery.js", "scripts/search.js"
 		],
 		"html": [ "templates/addButtonList.html" ],
 		"run_at": "document_end",
@@ -36,5 +36,8 @@
 	"permissions": ["http://*/*", "https://*/*", "unlimitedStorage", "contextMenus", "cookies", "tabs", "notifications", "activeTab"],
 	"web_accessible_resources": [
 		"bower_components/*", "scripts/*", "templates/addButtonList.html"
-	]
+	],
+	"externally_connectable": {
+  "matches": ["*://*.google.com/*"]
+	}
 }
