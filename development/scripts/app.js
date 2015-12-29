@@ -6,7 +6,7 @@
  * Main module of the application.
  */
 'use strict';
-var searchApp = angular.module('WittyParrotSearchExt', ['ui.router'])
+var searchApp = angular.module('WittyParrotProspector', ['ui.router','checklist-model'])
 .config(['$stateProvider','$rootScopeProvider','$urlRouterProvider', function ($stateProvider, $rootScopeProvider, $urlRouterProvider) {
                 //$locationProvider.html5Mode(true);
                 $rootScopeProvider.digestTtl(100);
@@ -62,8 +62,14 @@ searchApp.service("searchExtService", function($http, $q, $location){
         this.searchLinkedinProfile=function(){
           // Not implemented
         };
-        this.addLinkedinProfileUrl=function(){
-          // Not implemented
+        this.addLinkedinProfile=function(urlParam){
+          var deferred = $q.defer();
+          $http.post('http://192.168.47.134:7030/wittyparrot/profile', urlParam).then(function(response){
+            deferred.resolve(response.data);
+          }).then(null, function(response){
+            deferred.reject(response);
+          });
+          return deferred.promise;
         };
 
         this.getList=function(urlParam){
@@ -115,6 +121,10 @@ searchApp.service("searchExtService", function($http, $q, $location){
           };
       })
 .controller("searchExtCtrl", function($scope, searchExtService){
+              var contactList=[], startIndex=11;
+              var urlOpen='https://www.googleapis.com/customsearch/v1?key=AIzaSyB0rx6rbvzgktpbkDjbfEN0iGFe8rxyRNc&cx=005715890520657954213:jocayv96px0&q=';
+              $scope.profileObj={};
+              $scope.profileObj.linkedinProfileList=[];
               searchExtService.getList('scripts/title.json').then(function(response){
                 $scope.titleInfo=response.results;
               });
@@ -129,17 +139,67 @@ searchApp.service("searchExtService", function($http, $q, $location){
                 $('.ui.dropdown').dropdown();
               });
               $('#searchForm').submit(function(event){
-                var urlOpen='http://www.google.com/search?gws_rd=cr&as_qdr=all&q=';
-                var searchItem=(' "'+$(this).find('input[name=title]').val().split(",").join(' * * * Present" OR "') + ' * * * Present"')+(' "'+$(this).find('input[name=industry]').val().split(",").join('" OR "') + '"')+' "Location * '+$(this).find("input[name=location]").val()+'" '+"site:in.linkedin.com/in/ OR site:in.linkedin.com/pub/ -site:in.linkedin.com/pub/dir/";
+                var searchItem=($(this).find('input[name=keywords]').val()+' "'+$(this).find('input[name=title]').val().split(",").join(' * * * Present" OR "') + ' * * * Present"')+(' "'+$(this).find('input[name=industry]').val().split(",").join('" OR "') + '"')+' "Location * '+$(this).find("input[name=location]").val()+'" '+"site:in.linkedin.com/in/ OR site:in.linkedin.com/pub/ -site:in.linkedin.com/pub/dir/";
                 urlOpen=urlOpen+searchItem;
-
-                chrome.tabs.create({url: urlOpen, selected: true}, function(tab){ })
+                searchExtService.getList(urlOpen).then(function(response){
+                  $scope.searchResult=response.items;
+                  $scope.pageInfos=response.searchInformation.totalResults;
+                });
+                //chrome.tabs.create({url: urlOpen, selected: true}, function(tab){ })
                 return true;
               });
-              searchExtService.getInfo(function (info) {
+              /*searchExtService.getInfo(function (info) {
                   $scope.pageInfos = info.pageInfos;
                   $scope.$apply();
-              });
+
+              });*/
+              /* Start this function is to select Linkedin profile for all/single */
+                $scope.selectAllLinkedinProfile = function(isSelectAllAccount) {
+                    if (isSelectAllAccount) {
+                        $scope.profileObj.linkedinProfileList = angular.copy($scope.searchResult);
+                        for (var i = 0; i < $scope.profileObj.linkedinProfileList.length; i++) {
+                          var name=$scope.profileObj.linkedinProfileList[i].title.split(' | ');
+                        if($scope.profileObj.linkedinProfileList[i].pagemap.person[0].org)  contactList.push({
+                            "name":name[0],
+                            "org":$scope.profileObj.linkedinProfileList[i].pagemap.person[0].org,
+                            "role":$scope.profileObj.linkedinProfileList[i].pagemap.person[0].role,
+                            "location":$scope.profileObj.linkedinProfileList[i].pagemap.person[0].location,
+                            "html":"",
+                            "linkedInUrl":$scope.profileObj.linkedinProfileList[i].link
+                          });
+                        }
+                    } else {
+                        $scope.profileObj.linkedinProfileList=[];
+                        contactList=[];
+                    }
+                };
+                $scope.selectLinkedinProfile = function(profile, val, $index) {
+                    if (val) {
+                      var name=profile.title.split(' | ');
+                      contactList.push({
+                        "name":name[0],
+                        "org":profile.pagemap.person[0].org,
+                        "role":profile.pagemap.person[0].role,
+                        "location":profile.pagemap.person[0].location,
+                        "html":"",
+                        "linkedInUrl":profile.link
+                      });
+                    } else {
+                      contactList.splice($index, 1);
+                    }
+                };
+                /* End this function is to select Linkedin profile for all/single */
+                $scope.addContact=function(){    
+                  searchExtService.addLinkedinProfile({"wpUserName":"ranjit@wittyparrot.com","googleUserModel":contactList}).then(function(response){
+                    console.log(response);
+                  });
+                };
+                $scope.loadMoreProfile=function(){
+                  searchExtService.getList(urlOpen+'&start='+startIndex).then(function(response){
+                    $scope.searchResult=$scope.searchResult.concat(response.items);
+                    startIndex+=10;
+                  });
+                };
               $scope.clearSearchField=function(){
                 $('.ui.dropdown').dropdown('clear');
               };
