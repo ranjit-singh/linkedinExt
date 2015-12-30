@@ -4,15 +4,15 @@
      <span ng-click="logout()" style="float:right;cursor:pointer;" class="fa fa-power-off"></i>LogOut</span>
   </div>
   <ul  class="col-xs-12 nav nav-pills">
-    <li class="active">
+    <li ng-class="{active:isSearch}" ng-click="isSearch=true;">
       <a  href="#1b" data-toggle="tab">Search</a>
     </li>
-    <li><a href="#2b" data-toggle="tab">Results</a>
+    <li ng-class="{active:!isSearch}" ng-click="isSearch=false;"><a href="#2b" data-toggle="tab">Results</a>
     </li>
   </ul>
 
   <div class="tab-content clearfix">
-      <div class="tab-pane" ng-class="{active:true}" id="1b">
+      <div class="tab-pane" ng-class="{active:isSearch}" id="1b">
         <div class="col-xs-12 Container1">
           <form id="searchForm" name="searchProfile" role="form" method="post">
             <div class="col-xs-12">
@@ -83,13 +83,15 @@
           </form>
         </div>
       </div>
-      <div class="tab-pane" id="2b">
+      <div class="tab-pane" ng-class="{active:!isSearch}" id="2b">
+      <div ng-if="isLoadingContent" class="loading-icon"><img src="images/loading-x.gif" height="210" width="300"></div>
       <div class="col-xs-12" ng-if="pageInfos">
-        <span>Total Search Count = {{pageInfos}}</span>
-        <div><input type="checkbox" ng-model="selectAll" ng-change="selectAllLinkedinProfile(selectAll);"></div>
+        <span class="col-xs-12 searchCount">{{pageInfos}} people found</span>
+        <div class="col-xs-6"><input class="col-xs-4" type="checkbox" ng-model="profileObj.selectAll" ng-change="selectAllLinkedinProfile(profileObj.selectAll);">Select All</div>
         <div class="col-xs-12" ng-repeat="profile in searchResult" ng-if="profile.pagemap.person[0].org">
         <span class="col-xs-2"><input type="checkbox" checklist-model="profileObj.linkedinProfileList" checklist-value="profile" ng-change="selectLinkedinProfile(profile, checked, $index);" /></span>
-        <a href="{{profile.link}}" class="col-xs-10">{{profile.title}}</a>
+        <a href="{{profile.link}}" class="col-xs-10">{{profile.title.split(' | ')[0]}}</a>
+        <span class="col-xs-10 pull-right">{{profile.pagemap.person[0].role}}</span>
         </div>
         <center><input type="button" name="loadMore" value="Load More..." ng-click="loadMoreProfile();"></center>
         <div class="col-xs-12 submit-btn">

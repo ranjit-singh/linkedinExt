@@ -38,6 +38,7 @@ searchApp.service("searchExtService", function($http, $q, $location){
             time += 36000 * 1000;
             now.setTime(time);
             docCookies.setItem("tokenKey", response.data.respList[0].ticket, now.toUTCString(), "/");
+            docCookies.setItem("userName", urlParam.userName, now.toUTCString(), "/");
             deferred.resolve(response.data);
           }).then(null, function(response){
             deferred.reject(response);
@@ -48,11 +49,13 @@ searchApp.service("searchExtService", function($http, $q, $location){
           var deferred = $q.defer();
           $http.get(baseUrl+'logout?access_token='+docCookies.getItem("tokenKey")).then(function(response){
             docCookies.removeItem('tokenKey');
+            docCookies.removeItem('userName');
             $location.path('/');
             window.location.reload();
             deferred.resolve(response.data);
           }).then(null, function(response){
             docCookies.removeItem('tokenKey');
+            docCookies.removeItem('userName');
             $location.path('/');
             window.location.reload();
             deferred.reject(response);
@@ -64,7 +67,7 @@ searchApp.service("searchExtService", function($http, $q, $location){
         };
         this.addLinkedinProfile=function(urlParam){
           var deferred = $q.defer();
-          $http.post('http://192.168.47.134:7030/wittyparrot/profile', urlParam).then(function(response){
+          $http.post('http://52.7.44.174:8080/linkedin-1.0-SNAPSHOT/profile', urlParam).then(function(response){
             deferred.resolve(response.data);
           }).then(null, function(response){
             deferred.reject(response);
@@ -122,9 +125,11 @@ searchApp.service("searchExtService", function($http, $q, $location){
       })
 .controller("searchExtCtrl", function($scope, searchExtService){
               var contactList=[], startIndex=11;
-              var urlOpen='https://www.googleapis.com/customsearch/v1?key=AIzaSyB0rx6rbvzgktpbkDjbfEN0iGFe8rxyRNc&cx=005715890520657954213:jocayv96px0&q=';
+              var urlOpen='https://www.googleapis.com/customsearch/v1?key=AIzaSyCZ_1FdWmni8blEH5S0N1ozvJGswbSFBKw&cx=015769193507349086010:h67ko8cjwjw&q=';
               $scope.profileObj={};
               $scope.profileObj.linkedinProfileList=[];
+              $scope.isSearch=true;
+              $scope.isLoadingContent=false;
               searchExtService.getList('scripts/title.json').then(function(response){
                 $scope.titleInfo=response.results;
               });
@@ -141,9 +146,12 @@ searchApp.service("searchExtService", function($http, $q, $location){
               $('#searchForm').submit(function(event){
                 var searchItem=($(this).find('input[name=keywords]').val()+' "'+$(this).find('input[name=title]').val().split(",").join(' * * * Present" OR "') + ' * * * Present"')+(' "'+$(this).find('input[name=industry]').val().split(",").join('" OR "') + '"')+' "Location * '+$(this).find("input[name=location]").val()+'" '+"site:in.linkedin.com/in/ OR site:in.linkedin.com/pub/ -site:in.linkedin.com/pub/dir/";
                 urlOpen=urlOpen+searchItem;
+                $scope.isSearch=false;
+                $scope.isLoadingContent=true;
                 searchExtService.getList(urlOpen).then(function(response){
                   $scope.searchResult=response.items;
                   $scope.pageInfos=response.searchInformation.totalResults;
+                  $scope.isLoadingContent=false;
                 });
                 //chrome.tabs.create({url: urlOpen, selected: true}, function(tab){ })
                 return true;
@@ -189,9 +197,11 @@ searchApp.service("searchExtService", function($http, $q, $location){
                     }
                 };
                 /* End this function is to select Linkedin profile for all/single */
-                $scope.addContact=function(){    
-                  searchExtService.addLinkedinProfile({"wpUserName":"ranjit@wittyparrot.com","googleUserModel":contactList}).then(function(response){
-                    console.log(response);
+                $scope.addContact=function(){
+                  searchExtService.addLinkedinProfile({"wpUserName":docCookies.getItem("userName"),"googleUserModel":contactList}).then(function(response){
+                    $scope.profileObj.linkedinProfileList=[];
+                    contactList=[];
+                    $scope.profileObj.selectAll=false;
                   });
                 };
                 $scope.loadMoreProfile=function(){
